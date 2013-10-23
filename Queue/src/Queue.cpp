@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Queue/QueueException.hpp"
 #include "Queue/StaticCircularQueue.hpp"
+#include "Queue/LinkedQueue.hpp"
 #include <ctime>
 #include <cstdlib>
 
@@ -18,27 +19,25 @@ using namespace std;
 int main() {
 
 	StaticCircularQueue<int> q;
+	LinkedQueue<int> queue;
 	srand(time(NULL));
 try {
 	for (int i = 1; i < 9; i ++)
-		q.enqueue(rand() % 10);
+		queue.enqueue(rand() % 10);
 
-	q.display();
+	queue.display();
+	cout <<endl <<"Length is " <<queue.getLength();
+	cout <<endl <<"Front is " <<queue.front();
+	cout <<endl <<"==================";
+	queue.dequeue();
+	queue.dequeue();
+	cout <<endl <<"Front is " <<queue.front();
+	cout <<endl <<"Back is " <<queue.back();
 
-	cout <<endl <<"Front Item is " << q.front();
-	q.dequeue();
-	q.dequeue();
-	q.dequeue();
-	q.dequeue();
-	cout <<endl <<"Front Item is " << q.front();
-	q.display();
+	LinkedQueue<int> queue1;
+	queue1 = queue;
+	queue1.display();
 
-
-	q.enqueue(40);
-	q.enqueue(140);
-	q.enqueue(240);
-	q.enqueue(9);
-	q.enqueue(29);
 
 
 }
